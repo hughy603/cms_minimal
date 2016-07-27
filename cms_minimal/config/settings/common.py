@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import environ
+gettext = lambda s: s
 
 ROOT_DIR = environ.Path(__file__) - 3
 # TODO: Change this based off venv name
@@ -27,8 +28,7 @@ DJANGO_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Sites was in cookiecutter, but disabled until useful
-    # 'django.contrib.sites',
+    'django.contrib.sites',
 )
 
 THIRD_PARTY_APPS = (
@@ -38,14 +38,25 @@ THIRD_PARTY_APPS = (
     # 'allauth.socialaccount',  # registration
 )
 
+CMS_APPS = (
+    'cms',
+    'treebeard',
+    'menus',
+    'sekizai',
+    'djangocms_admin_style',
+    'reversion',
+)
+
 # Add project specific apps here
 # At project creation, none exist
 LOCAL_APPS = (
 )
 
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = CMS_APPS + DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE_CLASSES = [
+    # The following cms middleware comes first
+    'cms.middleware.utils.ApphookReloadMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,6 +65,12 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Remaining CMS middleware
+    'django.middleware.locale.LocaleMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
 ]
 
 MIGRATION_MODULES = {
@@ -76,7 +93,7 @@ DATABASES = {
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'EST'
 
@@ -108,6 +125,9 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                # CMS Context Processors are below
+                'sekizai.context_processors.sekizai',
+                'cms.context_processors.cms_settings',
             ],
         },
     },
@@ -161,3 +181,26 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
 ADMIN_URL = env('DJANGO_ADMIN_URL')
+
+# ========= Django CMS Specific Settings =============
+CMS_TEMPLATES = (
+    ('feature.html', 'Page with Feature'),
+)
+
+
+CMS_LANGUAGES = {
+    'default': {
+        'public': True,
+        'redirect_on_fallback': True,
+        'hide_untranslated': False,
+    },
+    1: [
+        {
+            'code': 'en-us',
+            'name': gettext('en'),
+            'public': True,
+            'redirect_on_fallback': True,
+            'hide_untranslated': False,
+        },
+    ],
+}

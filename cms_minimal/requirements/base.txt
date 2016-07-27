@@ -3,4 +3,6 @@ django-crispy-forms==1.6.0
 django-environ==0.4.0
 six==1.10.0
 psycopg2==2.6.2
-
+django-cms==3.3.1
+djangocms-text-ckeditor==3.0.1
+django-reversion<2.0

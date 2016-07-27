@@ -74,3 +74,21 @@ unset DJANGO_ADMIN_URL
 unset DJANGO_SETTINGS_MODULE
 unset DJANGO_SECRET_KEY
 ```
+
+# Install Django CMS
+http://docs.django-cms.org/en/release-3.3.x/how_to/install.html
+- Install requirements
+  - `pip install django_cms`
+  - `pip install djangocms-text-ckeditor`
+  - `pip install 'django-reversion<2.0'`
+- Configure config/settings/common.py
+- Configure URLs
+- Create base templates
+  - cms_minimal/templates/base.html
+  - cms_minimal/templates/feature.html
+  - cms_minimal/templates/menu.html
+  - cms_minimal/templates/page.html
+- Database Setup
+  - `python manage.py migrate`
+- Test Configuration
+  - `python manage.py cms check`
