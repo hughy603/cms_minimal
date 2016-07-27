@@ -40,6 +40,13 @@ the project structure.
   - `mv cms_minimal/settings.py config/settings/common.py`
   - Modify common.py to match git `vi config/settings/common.py`
   - Modify local.py to match git `vi config/settings/local.py`
+  - Migrate useful settings from cookiecutter
+- Install Dependencies
+  - Start server until dependencies are met
+  - In the future `pip -r requirements/local.py`
+- Static File Structure
+  - `mkdir -p cms_minimal/static/css/ cms_minimal/static/js`
+  - `mkdir cms_minimal/templates`
 
 # Example Venv scripts
 **Never keep these in a repository**
@@ -51,7 +58,8 @@ export POSTGRES_DB=app_name
 export DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@127.0.0.1:5432/${POSTGRES_DB}
 
 # General settings
-export DJANGO_ADMIN_URL=
+export DJANGO_ADMIN_URL=^admin/
+export DJANGO_SETTINGS_MODULE=config.settings.local
 export DJANGO_SECRET_KEY='123'
 ```
 ## ~/.virtualenvs/$App/bin/postdeactivate
@@ -63,5 +71,6 @@ unset DATABASE_URL
 
 # General settings
 unset DJANGO_ADMIN_URL
+unset DJANGO_SETTINGS_MODULE
 unset DJANGO_SECRET_KEY
 ```
