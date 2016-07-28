@@ -39,11 +39,12 @@ THIRD_PARTY_APPS = (
 )
 
 CMS_APPS = (
+    'djangocms_admin_style',
+    'djangocms_text_ckeditor',
     'cms',
     'treebeard',
     'menus',
     'sekizai',
-    'djangocms_admin_style',
     'reversion',
 )
 
@@ -73,9 +74,9 @@ MIDDLEWARE_CLASSES = [
     'cms.middleware.language.LanguageCookieMiddleware',
 ]
 
-MIGRATION_MODULES = {
-    'sites': 'cms_minimal.contrib.sites.migrations'
-}
+# MIGRATION_MODULES = {
+#    'sites': 'cms_minimal.contrib.sites.migrations'
+#}
 
 DEBUG = env.bool('DJANGO_DEBUG', False)
 
@@ -93,7 +94,11 @@ DATABASES = {
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
-LANGUAGE_CODE = 'en'
+LANGUAGES = [
+    ('en-us', 'English'),
+]
+
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'EST'
 
@@ -197,7 +202,7 @@ CMS_LANGUAGES = {
     1: [
         {
             'code': 'en-us',
-            'name': gettext('en'),
+            'name': gettext('en-us'),
             'public': True,
             'redirect_on_fallback': True,
             'hide_untranslated': False,
