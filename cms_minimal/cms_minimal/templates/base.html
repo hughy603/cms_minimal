@@ -37,7 +37,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        {% show_menu 0 1 0 100 "menu.html" %}
+                        {% show_menu 0 1 100 100 "menu.html" %}
                     </ul>
                 </div>
             </div>
@@ -65,7 +65,7 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="{% static "js/ie10-viewport-bug-workaround.js" %}"></script>
+        <script src="{% static "ie10-viewport-bug-workaround.js" %}"></script>
 
         {% render_block "js" %}
     </body>
