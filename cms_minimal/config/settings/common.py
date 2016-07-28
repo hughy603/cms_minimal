@@ -51,6 +51,7 @@ CMS_APPS = (
 # Add project specific apps here
 # At project creation, none exist
 LOCAL_APPS = (
+    'cms_minimal.cms_integration.apps.CmsIntegrationConfig',
 )
 
 INSTALLED_APPS = CMS_APPS + DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
