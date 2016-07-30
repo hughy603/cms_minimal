@@ -12,6 +12,8 @@ body {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   margin-top: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333;
 }
 
 .footer {
@@ -41,7 +43,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 .sidebar-module {
   padding: 15px;
-  color: #999;
+  margin: 0 -15px 15px; /* Makes the sidbar wider */
 }
 
 .sidebar-module-inset {
@@ -54,6 +56,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 .sidebar-module-inset ul:last_child,
 .sidebar-module-inset ol:last_child {
   margin-bottom: 0;
+}
+
+.pager {
+  margin-bottom: 60px;
+  text-align: left;
 }
 
 .pager > li > a {
@@ -74,7 +81,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 .blog-post-meta {
   margin-bottom: 20px;
-  font-size: 40px;
+  color: #999;
 }
 
 body > .container {

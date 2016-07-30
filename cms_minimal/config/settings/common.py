@@ -29,6 +29,8 @@ DJANGO_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'filer',
+    'easy_thumbnails',
 )
 
 THIRD_PARTY_APPS = (
@@ -46,6 +48,16 @@ CMS_APPS = (
     'menus',
     'sekizai',
     'reversion',
+    'djangocms_link',
+    'djangocms_style',
+    'djangocms_column',
+    'cmsplugin_filer_image',
+    'cmsplugin_filer_file',
+    'cmsplugin_filer_folder',
+    'cmsplugin_filer_teaser',
+    'cmsplugin_filer_utils',
+    'cmsplugin_filer_video',
+    'djangocms_forms',
 )
 
 # Add project specific apps here
@@ -190,7 +202,8 @@ ADMIN_URL = env('DJANGO_ADMIN_URL')
 
 # ========= Django CMS Specific Settings =============
 CMS_TEMPLATES = (
-    ('feature.html', 'Page with Feature'),
+    ('page.html', 'Page'),
+    ('blogpage.html', 'Blog Page with Sidebar'),
 )
 
 
@@ -210,3 +223,12 @@ CMS_LANGUAGES = {
         },
     ],
 }
+
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    # 'easy_thumbnails.processors.scale_and_crop',  # disable this one
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)

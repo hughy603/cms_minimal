@@ -92,3 +92,6 @@ http://docs.django-cms.org/en/release-3.3.x/how_to/install.html
   - `python manage.py migrate`
 - Test Configuration
   - `python manage.py cms check`
+
+# alt-shift-f formats HTML
+http://stackoverflow.com/questions/21190300/how-to-set-html-auto-indent-format-on-sublime-text-3

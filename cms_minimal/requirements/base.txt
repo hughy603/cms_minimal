@@ -6,3 +6,9 @@ psycopg2==2.6.2
 django-cms==3.3.1
 djangocms-text-ckeditor==3.0.1
 django-reversion<2.0
+djangocms-link==1.8.2
+djangocms-style==1.7.0
+djangocms-column==1.6.0
+easy-thumbnails==2.3
+django-filer==1.2.4
+cmsplugin-filer==1.1.2
